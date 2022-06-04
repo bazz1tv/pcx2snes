@@ -6,7 +6,9 @@
 //#include <malloc.h>
 #include <string.h>
 
+#ifndef _MSC_VER
 #define stricmp      strcasecmp
+#endif
 
 //MACROS
 #define HI_BYTE(n)  (((int)n>>8) & 0x00ff)  // extracts the hi-byte of a word
