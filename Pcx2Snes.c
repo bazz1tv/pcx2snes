@@ -84,7 +84,7 @@ int PCX_Load(char *filename, pcx_picture_ptr image)
 	long num_bytes,index;
 	long count;
 	long x,y;
-	unsigned char data;
+	unsigned char data = 0;
 	pcx_header *header;
 	FILE *fp;
 
@@ -734,7 +734,7 @@ int Convert2Pic(char *filebase, unsigned char *buffer,
 	int i;
 	int bitplanes;
 	int mask;
-	unsigned char data;
+	unsigned char data = 0;
 	FILE *fp;
 
 	if(packed)
