@@ -885,6 +885,7 @@ void PrintOptions(char *str)
 	printf("\n");
 	printf("\nCall with:  Pcx2Snes BASENAME");
 	printf("\n    where BASENAME.pcx is a 256 color PCX file");
+	printf("\n");
 	printf("\nValid options: ");
 	printf("\n    -p   output in packed pixel format");
 	printf("\n    -n   no border");
@@ -1080,7 +1081,7 @@ int main(int argc, char **arg)
 
 	//Load picture
 	sprintf(filename,"%s.pcx",filebase);
-	printf("\nOpenning graphics file: [%s]",filename);
+	printf("\nOpening graphics file: [%s]",filename);
 	if(!PCX_Load(filename,(pcx_picture_ptr) &image))
 		return 1;
 
@@ -1358,4 +1359,3 @@ int main(int argc, char **arg)
 
 	return 0;
 }
-	
