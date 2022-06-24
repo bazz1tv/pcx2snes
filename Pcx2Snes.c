@@ -6,7 +6,9 @@
 //#include <malloc.h>
 #include <string.h>
 
+#ifndef _MSC_VER
 #define stricmp      strcasecmp
+#endif
 
 //MACROS
 #define HI_BYTE(n)  (((int)n>>8) & 0x00ff)  // extracts the hi-byte of a word
@@ -82,7 +84,7 @@ int PCX_Load(char *filename, pcx_picture_ptr image)
 	long num_bytes,index;
 	long count;
 	long x,y;
-	unsigned char data;
+	unsigned char data = 0;
 	pcx_header *header;
 	FILE *fp;
 
@@ -732,7 +734,7 @@ int Convert2Pic(char *filebase, unsigned char *buffer,
 	int i;
 	int bitplanes;
 	int mask;
-	unsigned char data;
+	unsigned char data = 0;
 	FILE *fp;
 
 	if(packed)
@@ -883,6 +885,7 @@ void PrintOptions(char *str)
 	printf("\n");
 	printf("\nCall with:  Pcx2Snes BASENAME");
 	printf("\n    where BASENAME.pcx is a 256 color PCX file");
+	printf("\n");
 	printf("\nValid options: ");
 	printf("\n    -p   output in packed pixel format");
 	printf("\n    -n   no border");
@@ -1078,7 +1081,7 @@ int main(int argc, char **arg)
 
 	//Load picture
 	sprintf(filename,"%s.pcx",filebase);
-	printf("\nOpenning graphics file: [%s]",filename);
+	printf("\nOpening graphics file: [%s]",filename);
 	if(!PCX_Load(filename,(pcx_picture_ptr) &image))
 		return 1;
 
@@ -1356,4 +1359,3 @@ int main(int argc, char **arg)
 
 	return 0;
 }
-	
